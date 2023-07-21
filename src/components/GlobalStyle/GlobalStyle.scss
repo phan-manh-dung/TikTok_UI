@@ -1,13 +1,6 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-:root {
-  --primary: #fe2c55;
-  // default layout
-  --default-layout-header-height: 60px;
-  --default-layout-width: 1150px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -23,4 +16,24 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
+}
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
+}
+
+a[href] {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+:root {
+  --primary: #fe2c55;
+  --default-layout-header-height: 60px;
+  --default-layout-width: 1150px;
+  --default-layout-height: 60px;
+  --black: #000;
+  --text-color: #333;
 }
