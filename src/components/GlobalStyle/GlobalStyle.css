@@ -1,6 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -12,11 +11,12 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
 }
+
 button,
 input,
 [tabindex] {
@@ -37,4 +37,4 @@ a[href] {
   --black: #000;
   --text-color: #333;
   --white: #fff;
-}
+}/*# sourceMappingURL=GlobalStyle.css.map */

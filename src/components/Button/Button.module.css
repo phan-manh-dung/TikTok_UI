@@ -9,16 +9,16 @@
   border-radius: 6px;
   background-color: var(--white);
   border: 1px solid;
-  user-select: none;
-  // cứ nút nào đứng sau 1 nút thì cho nó tách ra
-  + .wrapper {
-    margin-left: 8px;
-  }
-  // ưu tiên hơn thắng các style khác
-  &.disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.wrapper + .wrapper {
+  margin-left: 8px;
+}
+.wrapper.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .icon + .title,
@@ -33,38 +33,35 @@
 
 .rounded {
   border-radius: 999px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   border-color: rgba(22, 24, 35, 0.12);
-  &:hover {
-    border-color: rgba(22, 24, 35, 0.2);
-    background-color: rgba(22, 24, 35, 0.03);
-  }
+}
+.rounded:hover {
+  border-color: rgba(22, 24, 35, 0.2);
+  background-color: rgba(22, 24, 35, 0.03);
 }
 
 .primary {
   color: var(--white);
   background-color: var(--primary);
   border-color: var(--primary);
-
-  &:hover {
-    border-color: var(--primary);
-    cursor: pointer;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
-  }
+}
+.primary:hover {
+  border-color: var(--primary);
+  cursor: pointer;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
 }
 
 .outline {
   color: var(--primary);
   border-color: currentColor;
-
-  &:hover {
-    border-color: currentColor;
-    cursor: pointer;
-    background-color: rgba(255, 44, 85, 0.06);
-  }
+}
+.outline:hover {
+  border-color: currentColor;
+  cursor: pointer;
+  background-color: rgba(255, 44, 85, 0.06);
 }
 
-// button size
 .small {
   min-width: 88px;
   padding: 4px 16px;
@@ -77,9 +74,9 @@
 
 .text {
   border: none;
-  &:hover {
-    text-decoration: underline;
-  }
+}
+.text:hover {
+  text-decoration: underline;
 }
 
 .custom-login {
@@ -88,4 +85,4 @@
 
 .wrapper-btn {
   border: none;
-}
+}/*# sourceMappingURL=Button.module.css.map */
