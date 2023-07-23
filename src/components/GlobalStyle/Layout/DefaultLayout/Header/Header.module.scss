@@ -16,6 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 var(--default-layout-horizontal-spacer);
 }
 
 .logo {
@@ -103,12 +104,35 @@
 
 .more-btn {
   font-size: 2rem;
-  margin-left: 28px;
+  margin-left: 18px;
   background-color: transparent;
   padding: 8px;
+  cursor: pointer;
+}
+// actions
+.actions {
+  display: flex;
+  align-items: center;
 }
 
 //menu
 .menu-items {
   width: 224px;
+}
+
+.actions-btn {
+  background-color: transparent;
+  font-size: 2.2rem;
+  color: #161823;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  margin-left: 12px;
+  cursor: pointer;
+  border-radius: 50%;
 }

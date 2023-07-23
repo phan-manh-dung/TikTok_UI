@@ -34,7 +34,27 @@ a[href] {
   --default-layout-header-height: 60px;
   --default-layout-width: 1150px;
   --default-layout-height: 60px;
+  --default-layout-horizontal-spacer: 24px;
   --black: #000;
-  --text-color: #333;
+  --text-color: #161823;
   --white: #fff;
+}
+
+body {
+  .tippy-box {
+    background-color: rgba(84, 84, 84, 0.92);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+  .tippy-arrrow {
+    color: #333;
+  }
+  .tippy-content {
+    padding: 8px 9px;
+  }
+  .tippy-box[data-placement^='bottom'] > .tippy-arrrow::before {
+    top: -8px;
+  }
 }

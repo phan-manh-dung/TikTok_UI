@@ -8,11 +8,11 @@
   padding: 9px 16px;
   border-radius: 6px;
   background-color: var(--white);
-  border: 1px solid;
+  // border: 1px solid;
   user-select: none;
   // cứ nút nào đứng sau 1 nút thì cho nó tách ra
   + .wrapper {
-    margin-left: 8px;
+    margin-left: 14px;
   }
   // ưu tiên hơn thắng các style khác
   &.disabled {
@@ -26,11 +26,13 @@
   margin-left: 8px;
 }
 
-.icon {
-  display: inline-block;
-  width: 15px;
+// .icon {
+//   display: inline-block;
+//   width: 15px;
+// }
+.icon1 {
+  background-color: #fe2c55;
 }
-
 .rounded {
   border-radius: 999px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
@@ -75,17 +77,22 @@
   padding: 14px 16px;
 }
 
-.text {
-  border: none;
-  &:hover {
-    text-decoration: underline;
-  }
+.upload {
+  border: 0.5px solid #999;
+  border-radius: 2px;
 }
+
+// .text {
+//   border: none;
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// }
 
 .custom-login {
   color: red;
 }
 
-.wrapper-btn {
-  border: none;
-}
+// .wrapper-btn {
+//   border: none;
+// }
