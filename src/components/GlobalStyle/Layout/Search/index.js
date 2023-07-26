@@ -3,12 +3,13 @@ import { useState, useEffect, useRef } from 'react';
 import { faCircleXmark, faSpinner, faMagnifyingGlass, faSignIn } from '@fortawesome/free-solid-svg-icons'; // Thêm dòng này
 
 import HeadlessTippy from '@tippyjs/react/headless';
-import Tippy from '@tippyjs/react';
+
 import AccountItem from '~/components/AccountItem';
-import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { useDebounce } from '~/hooks';
+import * as searchService from '~/apiServices/searchService';
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -17,26 +18,27 @@ function Search() {
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
 
+  const debouced = useDebounce(searchValue, 500); // người dùng ngừng gõ 500s thì mới nhận giá trị
+
   const inputRef = useRef();
 
   useEffect(() => {
-    if (!searchValue.trim()) {
+    if (!debouced.trim()) {
       setSearchResult([]); // Nếu searchValue trống, đặt kết quả tìm kiếm về rỗng
       return;
     }
 
-    setLoading(true); // Bắt đầu tải dữ liệu, đặt loading thành true
+    const fetchApi = async () => {
+      setLoading(true);
+      const result = await searchService.search(debouced);
+      setSearchResult(result);
+      setLoading(false);
+    };
 
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false); // Khi tải xong dữ liệu, đặt loading thành false
-      })
-      .catch(() => {
-        setLoading(false); // Khi có lỗi, đặt loading thành false
-      });
-  }, [searchValue]);
+    fetchApi();
+
+    setLoading(true); // Bắt đầu tải dữ liệu, đặt loading thành true
+  }, [debouced]);
 
   const handClear = () => {
     setSearchValue('');
