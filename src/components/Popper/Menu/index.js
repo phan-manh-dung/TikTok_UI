@@ -6,6 +6,7 @@ import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import Header from './Header';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
 function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
@@ -33,6 +34,14 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
     });
   };
 
+  const handResetMenu = () => {
+    setHistory((prev) => prev.slice(0, 1));
+  }; // xóa hết thằng sau đi lấy phần tử đầu tiên
+
+  const handleBack = () => {
+    setHistory((prev) => prev.slice(0, prev.length - 1)); // back quay dề tự động
+  };
+
   return (
     <Tippy
       // visible: hiện
@@ -44,23 +53,23 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
       render={(attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
           <PopperWrapper className={cx('menu-popper')}>
-            {history.length > 1 && (
-              <Header
-                title="Ngôn ngữ"
-                onBack={() => {
-                  setHistory((prev) => prev.slice(0, prev.length - 1)); // back quay dề
-                }}
-              />
-            )}
+            {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
             <div className={cx('menu-body')}> {renderItems()}</div>
           </PopperWrapper>
         </div>
       )}
-      onHide={() => setHistory((prev) => prev.slice(0, 1))} // xóa hết thằng sau đi lấy phần tử đầu tiên
+      onHide={handResetMenu}
     >
       {children}
     </Tippy>
   );
 }
+
+Menu.propTypes = {
+  children: PropTypes.node.isRequired,
+  items: PropTypes.array,
+  hideOnClick: PropTypes.bool,
+  onChange: PropTypes.func,
+};
 
 export default Menu;

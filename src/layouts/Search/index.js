@@ -18,19 +18,19 @@ function Search() {
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  const debouced = useDebounce(searchValue, 500); // người dùng ngừng gõ 500s thì mới nhận giá trị
+  const deboucedValue = useDebounce(searchValue, 500); // người dùng ngừng gõ 500s thì mới nhận giá trị
 
   const inputRef = useRef();
 
   useEffect(() => {
-    if (!debouced.trim()) {
+    if (!deboucedValue.trim()) {
       setSearchResult([]); // Nếu searchValue trống, đặt kết quả tìm kiếm về rỗng
       return;
     }
 
     const fetchApi = async () => {
       setLoading(true);
-      const result = await searchService.search(debouced);
+      const result = await searchService.search(deboucedValue);
       setSearchResult(result);
       setLoading(false);
     };
@@ -38,7 +38,7 @@ function Search() {
     fetchApi();
 
     setLoading(true); // Bắt đầu tải dữ liệu, đặt loading thành true
-  }, [debouced]);
+  }, [deboucedValue]);
 
   const handClear = () => {
     setSearchValue('');
