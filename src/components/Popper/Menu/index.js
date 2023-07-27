@@ -7,12 +7,13 @@ import MenuItem from './MenuItem';
 import Header from './Header';
 import { useState } from 'react';
 const cx = classNames.bind(styles);
-const defauftFn = () => {};
-function Menu({ children, items = [], onChange = defauftFn }) {
+const defaultFn = () => {};
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
   const [history, setHistory] = useState([{ data: items }]);
   const current = history[history.length - 1]; // lấy phần tử cuối
 
   const renderItems = () => {
+    // render lựa chọn cấp 1 cấp 2
     return current.data.map((item, index) => {
       const isParent = !!item.children;
 
@@ -38,6 +39,7 @@ function Menu({ children, items = [], onChange = defauftFn }) {
       interactive
       delay={(0, 700)}
       offset={[12, 8]}
+      hideOnClick={hideOnClick}
       placement="bottom-end"
       render={(attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -50,7 +52,7 @@ function Menu({ children, items = [], onChange = defauftFn }) {
                 }}
               />
             )}
-            {renderItems()}
+            <div className={cx('menu-body')}> {renderItems()}</div>
           </PopperWrapper>
         </div>
       )}

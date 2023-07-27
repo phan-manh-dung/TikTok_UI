@@ -1,4 +1,4 @@
-import Header from '~/components/GlobalStyle/Layout/DefaultLayout/Header';
+import Header from '~/layouts/DefaultLayout/Header';
 function Upload() {
   return (
     <div>
